@@ -1,0 +1,203 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {
+        "storageAccountName": "[toLower( concat( 'azurelalab', uniqueString(resourceGroup().id) ))]",
+        "networkSecurityGroupName": "shared-nsg",
+        "vNet1": {
+            "name": "vnet1",
+            "addressSpacePrefix": "10.1.0.0/16",
+            "subnetName": "subnet1",
+            "subnetPrefix": "10.1.1.0/24"
+        },
+        "departmentName": "MyDepartment",
+        "createdBy": "MyName",
+        "applicationName": "MyApp",
+        "imagePublisher": "MicrosoftWindowsServer",
+        "imageOffer": "WindowsServer",
+        "osVersion": "2016-Datacenter",
+        "vm1": {
+            "name": "webvm1",
+            "vmSize": "Standard_B1ms",
+            "nicName": "webvm1-nic1",
+            "pubIpName": "webvm1-pip1",
+            "pubIpType": "Static",
+            "pubIpSku": "Standard"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2020-04-01",
+            "name": "[variables('networkSecurityGroupName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "allow_rdp_webservers",
+                        "properties": {
+                            "description": "Allow RDP access to web servers.",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefixes": [
+                                "10.1.1.10",
+                                "10.1.1.11",
+                                "10.1.1.12"
+                            ],
+                            "access": "Allow",
+                            "priority": 200,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2016-03-30",
+            "name": "[variables('vNet1').name]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityGroupName'))]"
+            ],
+            "tags": {
+                "Department": "[variables('departmentName')]",
+                "Application": "[variables('applicationName')]",
+                "Created By": "[variables('createdBy')]"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('vNet1').addressSpacePrefix]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('vNet1').subnetName]",
+                        "properties": {
+                            "addressPrefix": "[variables('vNet1').subnetPrefix]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[variables('storageAccountName')]",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "Department": "[variables('departmentName')]",
+                "Application": "[variables('applicationName')]",
+                "Created By": "[variables('createdBy')]"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "StorageV2",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-04-01",
+            "name": "[variables('vm1').pubIpName]",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "Department": "[variables('departmentName')]",
+                "Application": "[variables('applicationName')]",
+                "Created By": "[variables('createdBy')]"
+            },
+            "sku": {
+                "name": "[variables('vm1').pubIpSku]"
+            },
+            "properties": {
+                "publicIPAllocationMethod": "[variables('vm1').pubIpType]"
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2017-06-01",
+            "name": "[variables('vm1').nicName]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('vm1').pubIpName)]",
+                "[resourceId('Microsoft.Network/virtualNetworks/', variables('vnet1').name)]"
+            ],
+            "tags": {
+                "Department": "[variables('departmentName')]",
+                "Application": "[variables('applicationName')]",
+                "Created By": "[variables('createdBy')]"
+            },
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('vm1').pubIpName)]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet1').name, variables('vnet1').subnetName)]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2017-03-30",
+            "name": "[variables('vm1').name]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces/', variables('vm1').nicName)]"
+            ],
+            "tags": {
+                "defaultExperience": "Yes"
+            },
+            "properties": {
+                "osProfile": {
+                    "adminUsername": "cloud_user",
+                    "adminPassword": "84av6yXF*8XMxkoxVjwC",
+                    "computerName": "[variables('vm1').name]"
+                },
+                "hardwareProfile": {
+                    "vmSize": "[variables('vm1').vmSize]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[variables('imagePublisher')]",
+                        "offer": "[variables('imageOffer')]",
+                        "sku": "[variables('osVersion')]",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage"
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('vm1').nicName)]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
