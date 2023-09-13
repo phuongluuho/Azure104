@@ -1,0 +1,15 @@
+{
+    "Name": "Helpdesk Administrators",
+    "Description": "Can Read, Restart VMs, and log support tickets with Microsoft",
+    "Actions": [
+        "*/read",
+        "Microsoft.Compute/virtualMachines/start/action",
+        "Microsoft.Support/*"
+    ],
+    "NotActions": [],
+    "DataActions": [],
+    "NotDataActions": [],
+    "AssignableScopes": [
+        "/subscriptions/subscriptionId"
+    ]
+}
