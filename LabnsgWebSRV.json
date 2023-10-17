@@ -217,7 +217,7 @@
                         "autoUpgradeMinorVersion": true,
                         "settings": {
                             "fileUris": [
-                                "https://raw.githubusercontent.com/chadmcrowell/scripts-for-labs/master/PowerShell/install-iis.ps1"
+                                "https://raw.githubusercontent.com/phuongluuho/Azure104/main/install-iis.ps1"
                             ],
                             "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File install-iis.ps1"
                         }
@@ -277,7 +277,7 @@
                         "autoUpgradeMinorVersion": true,
                         "settings": {
                             "fileUris": [
-                                "https://raw.githubusercontent.com/chadmcrowell/scripts-for-labs/master/PowerShell/install-iis.ps1"
+                                "https://raw.githubusercontent.com/phuongluuho/Azure104/main/install-iis.ps1"
                             ],
                             "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File install-iis.ps1"
                         }
