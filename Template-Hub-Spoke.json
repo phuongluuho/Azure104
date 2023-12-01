@@ -1,0 +1,179 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2019-04-01-preview/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {
+        "location": "[resourceGroup().location]",
+        "location2": "eastus",
+        "vnetName": "HUB-VNET",
+        "vnetName2": "SPOKE-VNET",
+        "vnetPrefix": "10.0.0.0/16",
+        "vnetPrefix2": "10.41.0.0/16",
+        "subnetName": "snet1",
+        "subnetPrefix": "10.0.0.0/24",
+        "subnetPrefix2": "10.41.0.0/24",
+        "gatewaySubnetPrefix": "10.0.255.0/27",
+        "gatewaySubnetPrefix2": "10.41.255.0/27",
+        "publicIPAddressName": "[toLower( concat( 'gw0pip-', substring( uniquestring(resourceGroup().id), 0, 5 ) ) )]",
+        "publicIPAddressName2": "[toLower( concat( 'gw41pip-', substring( uniquestring(resourceGroup().id), 0, 5 ) ) )]",
+        "DNSPrefix": "[toLower( concat( 'dns1-', substring( uniquestring(resourceGroup().id), 0, 5 ) ) )]",
+        "DNSPrefix2": "[toLower( concat( 'dns2-', substring( uniquestring(resourceGroup().id), 0, 5 ) ) )]",
+        "VPNGW": "VPN00-HUB",
+        "VPNGW2": "VPN41-SPOKE",
+        "publicIPAddressType": "Dynamic",
+        "NSGName": "[toLower( concat( 'nsg1-', substring( uniquestring(resourceGroup().id), 0, 5 ) ) )]",
+        "NSGName2": "[toLower( concat( 'nsg2-', substring( uniquestring(resourceGroup().id), 0, 5 ) ) )]",
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
+        "GWID": "[concat(variables('vnetID'),'/subnets/GatewaySubnet')]",
+        "vnetID2": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName2'))]",
+        "GWID2": "[concat(variables('vnetID2'),'/subnets/GatewaySubnet')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-05-01",
+            "name": "[variables('vnetName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('vnetPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnetPrefix')]"
+                        }
+                    },
+                    {
+                        "name": "GatewaySubnet",
+                        "properties": {
+                            "addressPrefix": "[variables('gatewaySubnetPrefix')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-05-01",
+            "name": "[variables('vnetName2')]",
+            "location": "[variables('location2')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('vnetPrefix2')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnetPrefix2')]"
+                        }
+                    },
+                    {
+                        "name": "GatewaySubnet",
+                        "properties": {
+                            "addressPrefix": "[variables('gatewaySubnetPrefix2')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-05-01",
+            "name": "[variables('publicIPAddressName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[variables('DNSPrefix')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-05-01",
+            "name": "[variables('publicIPAddressName2')]",
+            "location": "[variables('location2')]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[variables('DNSPrefix2')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworkGateways",
+            "apiVersion": "2020-05-01",
+            "name": "[variables('vpngw')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+                "[concat('Microsoft.Network/virtualNetworks/', variables('vnetName'))]"
+            ],
+            "tags": {},
+            "properties": {
+                "gatewayType": "Vpn",
+                "ipConfigurations": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[variables('GWID')]"
+                            },
+                            "publicIpAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]"
+                            }
+                        }
+                    }
+                ],
+                "vpnType": "RouteBased",
+                "vpnGatewayGeneration": "Generation1",
+                "sku": {
+                    "name": "VpnGw2",
+                    "tier": "VpnGw2"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworkGateways",
+            "apiVersion": "2020-05-01",
+            "name": "[variables('vpngw2')]",
+            "location": "[variables('location2')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName2'))]",
+                "[concat('Microsoft.Network/virtualNetworks/', variables('vnetName2'))]"
+            ],
+            "properties": {
+                "gatewayType": "Vpn",
+                "ipConfigurations": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[variables('GWID2')]"
+                            },
+                            "publicIpAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName2'))]"
+                            }
+                        }
+                    }
+                ],
+                "vpnType": "RouteBased",
+                "vpnGatewayGeneration": "Generation1",
+                "sku": {
+                    "name": "VpnGw2",
+                    "tier": "VpnGw2"
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
