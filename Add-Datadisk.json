@@ -136,7 +136,13 @@
                 },
                 "storageProfile": {
                     "imageReference": {
-                        "id": "[variables('customImageResourceId')]"
+                        "publisher": "[variables('imagePublisher')]",
+                        "offer": "[variables('imageOffer')]",
+                        "sku": "[variables('osVersion')]",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage"
                     }
                 },
                 "networkProfile": {
