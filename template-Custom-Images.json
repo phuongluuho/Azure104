@@ -189,7 +189,7 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/chadmcrowell/scripts-for-labs/master/Bash/install-pwsh.sh"
+                        "https://raw.githubusercontent.com/phuongluuho/Azure104/main/install-pwsh.sh"
                     ],
                     "commandToExecute": "sh install-pwsh.sh"
                 }
