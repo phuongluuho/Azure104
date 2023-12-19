@@ -19,7 +19,7 @@
         "vmSize": "Standard_B1s",
         "imagePublisher2": "Canonical",
         "imageOffer2": "UbuntuServer",
-        "osVersion2": "20.04-LTS",
+        "osVersion2": "18.04-LTS",
         "storageAccountName": "[toLower( concat( 'stor', uniqueString(resourceGroup().id)))]"
     },
     "resources": [
