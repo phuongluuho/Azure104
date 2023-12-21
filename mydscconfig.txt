@@ -1,0 +1,8 @@
+Configuration mydscconfig {
+    Node "localhost" {
+        WindowsFeature MyFeatureInstance {
+            Ensure = 'Present'
+            Name = 'Web-Server'
+        }
+    }
+}
