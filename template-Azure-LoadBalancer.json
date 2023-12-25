@@ -21,7 +21,7 @@
         "imageOffer2": "UbuntuServer",
         "osVersion2": "18.04-LTS",
         "storageAccountName": "[toLower( concat( 'stor', uniqueString(resourceGroup().id)))]",
-        "customData": "https://raw.githubusercontent.com/chadmcrowell/scripts-for-labs/master/Bash/cloud-init-nginx.txt"
+        "customData": "https://raw.githubusercontent.com/phuongluuho/Azure104/main/cloud-init-nginx.txt"
     },
     "resources": [
         {
@@ -191,7 +191,7 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/chadmcrowell/scripts-for-labs/master/Bash/install-pwsh.sh"
+                        "https://raw.githubusercontent.com/phuongluuho/Azure104/main/install-pwsh.sh"
                     ],
                     "commandToExecute": "sh install-pwsh.sh"
                 }
