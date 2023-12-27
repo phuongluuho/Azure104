@@ -1,0 +1,48 @@
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - php-fpm
+
+write_files:
+  - path: /var/www/html/index.php
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Azure Virtual Machine</title>
+      </head>
+      <body>
+          <h1>Azure Virtual Machine</h1>
+          <p>This page is served by: <?php echo gethostname(); ?></p>
+      </body>
+      </html>
+
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+          listen 80 default_server;
+          listen [::]:80 default_server;
+
+          root /var/www/html;
+          index index.php index.html index.htm;
+
+          server_name _;
+
+          location / {
+              try_files $uri $uri/ =404;
+          }
+
+          location ~ \.php$ {
+              include snippets/fastcgi-php.conf;
+              fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+              include fastcgi_params;
+          }
+      }
+
+runcmd:
+  - systemctl enable nginx
+  - systemctl start nginx
+  - systemctl enable php7.4-fpm
+  - systemctl start php7.4-fpm
