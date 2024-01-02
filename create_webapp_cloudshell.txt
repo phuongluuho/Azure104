@@ -1,5 +1,5 @@
 # Create a Web App from Cloud Shell using PowerShell
-# NOTE: This exercise was completed in the ACG Azure Cloud Sandbox
+# NOTE: This exercise was completed in the Azure Portal
 
 # create dotnet web app
 dotnet new mvc -o demowebapp
