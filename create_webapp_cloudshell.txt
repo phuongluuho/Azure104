@@ -18,7 +18,7 @@ zip -r site.zip *
 
 # create variables
 $rg = (Get-AzResourceGroup).ResourceGroupName
-$appname = "<your_app_name"
+$appname = "<your_app_name>"
 
 # publish dotnet app to webapp
 az webapp deployment source config-zip `
