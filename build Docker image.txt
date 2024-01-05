@@ -1,0 +1,30 @@
+Để build (xây dựng) một Docker image với Nginx và một file index.html chứa nội dung "Hello, welcome to Azure Container!!!", bạn có thể thực hiện các bước sau:
+
+1. Tạo một thư mục để chứa Dockerfile và file index.html: 
+mkdir mynginx
+cd mynginx
+
+2. Tạo một file Dockerfile trong thư mục vừa tạo với nội dung sau:
+# Sử image nginx làm image cơ bản
+FROM nginx
+
+# Sao chép file index.html vào thư mục /usr/share/nginx/html
+COPY index.html /usr/share/nginx/html
+
+# Mở cổng 80 cho nginx
+EXPOSE 80
+
+3. Tạo file index.html với nội dung mong muốn:
+
+echo "Hello, welcome to Azure Container!!!" > index.html
+
+4. Build một Docker image:
+
+docker build -t mynginx:latest .
+
+5. Chạy container từ Docker image mới tạo:
+
+docker run -p 8080:80 mynginx:latest
+
+Cuối cùng  bạn có thể mở trình duyệt và truy cập địa chỉ http://localhost:8080 để xem nội dung của file index.html 
+trên web server Nginx trong container Docker của bạn
