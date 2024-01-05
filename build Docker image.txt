@@ -20,11 +20,11 @@ echo "Hello, welcome to Azure Container!!!" > index.html
 
 4. Build một Docker image:
 
-docker build -t mynginx:latest .
+sudo docker build -t mynginx:latest .
 
 5. Chạy container từ Docker image mới tạo:
 
-docker run -p 8080:80 mynginx:latest
+sudo docker run -p 8080:80 mynginx:latest
 
 Cuối cùng  bạn có thể mở trình duyệt và truy cập địa chỉ http://localhost:8080 để xem nội dung của file index.html 
 trên web server Nginx trong container Docker của bạn
