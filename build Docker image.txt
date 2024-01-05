@@ -16,7 +16,7 @@ EXPOSE 80
 
 3. Tạo file index.html với nội dung mong muốn:
 
-echo "Hello, welcome to Azure Container!!!" > index.html
+echo "Hello, welcome to Azure Container" > index.html
 
 4. Build một Docker image:
 
@@ -28,3 +28,13 @@ sudo docker run -p 8080:80 mynginx:latest
 
 Cuối cùng  bạn có thể mở trình duyệt và truy cập địa chỉ http://localhost:8080 để xem nội dung của file index.html 
 trên web server Nginx trong container Docker của bạn
+6. Tạo azure container registry trong Azure Portal
+
+# login to Docker container registry
+docker login cloudchaseregdemo.azurecr.io --username <your_acr_username>
+
+# tag Docker image
+docker tag containerdemo <acr>/myimages/containerdemo:latest
+
+# push container vào azure container registry
+docker push <acr>/myimages/containerdemo:latest
