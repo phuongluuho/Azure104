@@ -5,7 +5,7 @@ mkdir mynginx
 cd mynginx
 
 2. Tạo một file Dockerfile trong thư mục vừa tạo với nội dung sau:
-# Sử image nginx làm image cơ bản
+# Sử dụng image nginx làm image cơ bản
 FROM nginx
 
 # Sao chép file index.html vào thư mục /usr/share/nginx/html
