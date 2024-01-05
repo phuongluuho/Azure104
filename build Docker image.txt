@@ -31,10 +31,14 @@ trên web server Nginx trong container Docker của bạn
 6. Tạo azure container registry trong Azure Portal
 
 # login to Docker container registry
-docker login cloudchaseregdemo.azurecr.io --username <your_acr_username>
+sudo docker login phuonghodemo.azurecr.io --username <your_acr_username>
+
+mdgHBMQYqHACte4PaN9bHT+rt1djBK+CLtgmm9/klB+ACRD3XWJE
 
 # tag Docker image
-docker tag containerdemo <acr>/myimages/containerdemo:latest
+sudo docker tag mynginx <acr>/myimages/mynginx:latest
 
-# push container vào azure container registry
-docker push <acr>/myimages/containerdemo:latest
+# push container to azure container registry
+sudo docker push <acr>/myimages/mynginx:latest
+
+
