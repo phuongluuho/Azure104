@@ -1,777 +1,235 @@
-[
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/1264A8685AE1BFB6",
-    "operationId": "1264A8685AE1BFB6",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:18:11.9872672Z",
-      "duration": "PT2M4.9606066S",
-      "trackingId": "f0547a93-9a29-4cc2-a50d-1123c30dadd1",
-      "statusCode": "OK",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Compute/virtualMachines/lab-VM/extensions/labPrep",
-        "resourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "resourceName": "lab-VM/labPrep"
-      },
-      "request": {
-        "content": {
-          "location": "southcentralus",
-          "properties": {
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-              "fileUris": [
-                "https://raw.githubusercontent.com/phuongluuho/Azure104/main/satt-special-cars.csv",
-                "https://raw.githubusercontent.com/phuongluuho/Azure104/main/satt-anomalous-items.csv",
-                "https://raw.githubusercontent.com/phuongluuho/Azure104/main/satt-breakroom-fridge.csv"
-              ],
-              "commandToExecute": "curl -sL https://aka.ms/InstallAzureCLIDeb | bash && az storage file upload-batch --destination records --source . --pattern \"*.csv\" --account-name storfdmos7iw6bn5s --account-key 9Cxrdv2EImkLeLY2ML4vMVodZPGtnKcwVd1sLyhpsGZJ0EBtV1lgGzRdADPC8bKp8RAH2WmUwEfd+AStX4HYqA=="
-            }
-          }
-        }
-      },
-      "response": {
-        "content": {
-          "name": "labPrep",
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Compute/virtualMachines/lab-VM/extensions/labPrep",
-          "type": "Microsoft.Compute/virtualMachines/extensions",
-          "location": "southcentralus",
-          "properties": {
-            "autoUpgradeMinorVersion": true,
-            "provisioningState": "Succeeded",
-            "instanceView": {
-              "name": "labPrep",
-              "type": "Microsoft.Azure.Extensions.CustomScript",
-              "typeHandlerVersion": "2.1.10",
-              "statuses": [
-                {
-                  "code": "ProvisioningState/succeeded",
-                  "level": "Info",
-                  "displayStatus": "Provisioning succeeded",
-                  "message": "Enable succeeded: \n[stdout]\nubuntu bionic-security/universe amd64 Packages [1303 kB]\nGet:19 http://azure.archive.ubuntu.com/ubuntu bionic-security/universe Translation-en [308 kB]\nGet:20 http://azure.archive.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [19.8 kB]\nGet:21 http://azure.archive.ubuntu.com/ubuntu bionic-security/multiverse Translation-en [3928 B]\nFetched 21.1 MB in 5s (3837 kB/s)\nReading package lists...\nReading package lists...\nBuilding dependency tree...\nReading state information...\nlsb-release is already the newest version (9.20170808ubuntu1).\nlsb-release set to manually installed.\ncurl is already the newest version (7.58.0-2ubuntu3.24).\ncurl set to manually installed.\ngnupg is already the newest version (2.2.4-1ubuntu1.6).\ngnupg set to manually installed.\nThe following NEW packages will be installed:\n  apt-transport-https\n0 upgraded, 1 newly installed, 0 to remove and 2 not upgraded.\nNeed to get 1692 B of archives.\nAfter this operation, 155 kB of additional disk space will be used.\nGet:1 http://azure.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 apt-transport-https all 1.6.17 [1692 B]\nFetched 1692 B in 0s (128 kB/s)\nSelecting previously unselected package apt-transport-https.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 59190 files and directories currently installed.)\r\nPreparing to unpack .../apt-transport-https_1.6.17_all.deb ...\r\nUnpacking apt-transport-https (1.6.17) ...\r\nSetting up apt-transport-https (1.6.17) ...\r\nHit:1 http://azure.archive.ubuntu.com/ubuntu bionic InRelease\nHit:2 http://azure.archive.ubuntu.com/ubuntu bionic-updates InRelease\nHit:3 http://azure.archive.ubuntu.com/ubuntu bionic-backports InRelease\nHit:4 http://azure.archive.ubuntu.com/ubuntu bionic-security InRelease\nGet:5 https://packages.microsoft.com/repos/azure-cli bionic InRelease [3599 B]\nGet:6 https://packages.microsoft.com/repos/azure-cli bionic/main amd64 Packages [1264 B]\nGet:7 https://packages.microsoft.com/repos/azure-cli bionic/main all Packages [7353 B]\nFetched 12.2 kB in 1s (12.5 kB/s)\nReading package lists...\nReading package lists...\nBuilding dependency tree...\nReading state information...\nThe following NEW packages will be installed:\n  azure-cli\n0 upgraded, 1 newly installed, 0 to remove and 2 not upgraded.\nNeed to get 65.1 MB of archives.\nAfter this operation, 819 MB of additional disk space will be used.\nGet:1 https://packages.microsoft.com/repos/azure-cli bionic/main amd64 azure-cli amd64 2.56.0-1~bionic [65.1 MB]\nFetched 65.1 MB in 1s (65.2 MB/s)\nSelecting previously unselected package azure-cli.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 59194 files and directories currently installed.)\r\nPreparing to unpack .../azure-cli_2.56.0-1~bionic_amd64.deb ...\r\nUnpacking azure-cli (2.56.0-1~bionic) ...\r\nSetting up azure-cli (2.56.0-1~bionic) ...\r\n[\n  \"https://storfdmos7iw6bn5s.file.core.windows.net/records/satt-anomalous-items.csv\",\n  \"https://storfdmos7iw6bn5s.file.core.windows.net/records/satt-breakroom-fridge.csv\",\n  \"https://storfdmos7iw6bn5s.file.core.windows.net/records/satt-special-cars.csv\"\n]\n\n[stderr]\nWARNING: uploading /var/lib/waagent/custom-script/download/0/satt-anomalous-items.csv\n\rAlive[################################################################]  100.0000%\rFinished[#############################################################]  100.0000%\nWARNING: uploading /var/lib/waagent/custom-script/download/0/satt-breakroom-fridge.csv\n\rAlive[################################################################]  100.0000%\rFinished[#############################################################]  100.0000%\nWARNING: uploading /var/lib/waagent/custom-script/download/0/satt-special-cars.csv\n\rAlive[################################################################]  100.0000%\rFinished[#############################################################]  100.0000%\n"
-                }
-              ]
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {
+        "adminUserName": "cloud_user",
+        "vmSize": "Standard_B1ms",
+        "vmName": "lab-VM",
+        "ubuntuOSVersion": "18.04-LTS",
+        "uniqueDnsLabelPrefix": "[concat('store', uniquestring(resourceGroup().id))]",
+        "location": "[resourceGroup().location]",
+        "imagePublisher": "Canonical",
+        "imageOffer": "UbuntuServer",
+        "addressPrefix": "10.0.0.0/16",
+        "subnet1Name": "default",
+        "subnet1Prefix": "10.0.0.0/24",
+        "nicName": "lab-NIC",
+        "publicIPAddressName": "lab-PIP",
+        "publicIPAddressType": "Dynamic",
+        "virtualNetworkName": "lab-VNET",
+        "networkSecurityGroupName": "lab-NSG",
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+        "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
+        "storageAccountName": "[toLower( concat( 'stor', uniqueString(resourceGroup().id)))]",
+        "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "fileShareName": "records",
+        "file1URL": "https://raw.githubusercontent.com/phuongluuho/Azure104/main/satt-special-cars.csv",
+        "file2URL": "https://raw.githubusercontent.com/phuongluuho/Azure104/main/satt-anomalous-items.csv",
+        "file3URL": "https://raw.githubusercontent.com/phuongluuho/Azure104/main/satt-breakroom-fridge.csv"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.RecoveryServices/vaults",
+            "apiVersion": "2016-06-01",
+            "name": "vault1",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "RS0",
+                "tier": "Standard"
             },
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.0",
-            "settings": {
-              "fileUris": [
-                "https://raw.githubusercontent.com/linuxacademy/content-azurestoragedd-lab-resources/master/satt-special-cars.csv",
-                "https://raw.githubusercontent.com/linuxacademy/content-azurestoragedd-lab-resources/master/satt-anomalous-items.csv",
-                "https://raw.githubusercontent.com/linuxacademy/content-azurestoragedd-lab-resources/master/satt-breakroom-fridge.csv"
-              ],
-              "commandToExecute": "curl -sL https://aka.ms/InstallAzureCLIDeb | bash && az storage file upload-batch --destination records --source . --pattern \"*.csv\" --account-name storfdmos7iw6bn5s --account-key 9Cxrdv2EImkLeLY2ML4vMVodZPGtnKcwVd1sLyhpsGZJ0EBtV1lgGzRdADPC8bKp8RAH2WmUwEfd+AStX4HYqA=="
-            }
-          }
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/85F11D871A6DED9E",
-    "operationId": "85F11D871A6DED9E",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:15:34.4461242Z",
-      "duration": "PT0.4747045S",
-      "trackingId": "624aaad0-0877-4f1c-a5ce-7cbd76cba4dc",
-      "statusCode": "Created",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Storage/storageAccounts/storfdmos7iw6bn5s/fileServices/default/shares/records",
-        "resourceType": "Microsoft.Storage/storageAccounts/fileServices/shares",
-        "resourceName": "storfdmos7iw6bn5s/default/records"
-      },
-      "request": {
-        "content": {}
-      },
-      "response": {
-        "content": {
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Storage/storageAccounts/storfdmos7iw6bn5s/fileServices/default/shares/records",
-          "name": "records",
-          "type": "Microsoft.Storage/storageAccounts/fileServices/shares"
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/3AD191681BC904A3",
-    "operationId": "3AD191681BC904A3",
-    "properties": {
-      "provisioningOperation": "Action",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:15:34.0461485Z",
-      "duration": "PT21.8816452S",
-      "trackingId": "73d95417-a758-4091-b8f4-c302ab0e7e0d",
-      "statusCode": "OK",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Storage/storageAccounts/storfdmos7iw6bn5s",
-        "resourceType": "Microsoft.Storage/storageAccounts",
-        "resourceName": "storfdmos7iw6bn5s",
-        "actionName": "listKeys",
-        "apiVersion": "2015-05-01-preview"
-      },
-      "request": {},
-      "response": {
-        "content": {
-          "key1": "9Cxrdv2EImkLeLY2ML4vMVodZPGtnKcwVd1sLyhpsGZJ0EBtV1lgGzRdADPC8bKp8RAH2WmUwEfd+AStX4HYqA==",
-          "key2": "fA5jvwXb0U2du5kYYsdn16qUkL4z9pv2LL9hS8UnYeMagmSBWMA1Am/P5Z7hY++q4jMkt/cMej8e+ASt+/RWoQ=="
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/4E39FD66162DD84A",
-    "operationId": "4E39FD66162DD84A",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:16:06.7915292Z",
-      "duration": "PT47.4143274S",
-      "trackingId": "b8f6ea21-1566-45fc-a4fb-f6d4b2ed8d8e",
-      "statusCode": "OK",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Compute/virtualMachines/lab-VM",
-        "resourceType": "Microsoft.Compute/virtualMachines",
-        "resourceName": "lab-VM"
-      },
-      "request": {
-        "content": {
-          "location": "southcentralus",
-          "properties": {
-            "osProfile": {
-              "adminUsername": "cloud_user",
-              "adminPassword": "WYK59y&koUjwLqlh0Jjp",
-              "computerName": "lab-VM",
-              "linuxConfiguration": {
-                "disablePasswordAuthentication": false
-              }
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2018-02-01",
+            "name": "[variables('storageAccountName')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "Standard_LRS"
             },
-            "hardwareProfile": {
-              "vmSize": "Standard_B1ms"
-            },
-            "storageProfile": {
-              "imageReference": {
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "18.04-LTS",
-                "version": "latest"
-              },
-              "osDisk": {
-                "createOption": "FromImage"
-              }
-            },
-            "networkProfile": {
-              "networkInterfaces": [
-                {
-                  "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkInterfaces/lab-NIC"
-                }
-              ]
-            }
-          }
-        }
-      },
-      "response": {
-        "content": {
-          "name": "lab-VM",
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Compute/virtualMachines/lab-VM",
-          "type": "Microsoft.Compute/virtualMachines",
-          "location": "southcentralus",
-          "properties": {
-            "hardwareProfile": {
-              "vmSize": "Standard_B1ms"
-            },
-            "provisioningState": "Succeeded",
-            "vmId": "3bf9d8de-ca5e-4a12-9c6a-bdbb50dfbf09",
-            "storageProfile": {
-              "imageReference": {
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "18.04-LTS",
-                "version": "latest"
-              },
-              "osDisk": {
-                "osType": "Linux",
-                "name": "lab-VM_disk1_c7bf28f677154c3c9539ae24d4c4f70d",
-                "createOption": "FromImage",
-                "caching": "ReadWrite",
-                "managedDisk": {
-                  "storageAccountType": "Premium_LRS",
-                  "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Compute/disks/lab-VM_disk1_c7bf28f677154c3c9539ae24d4c4f70d"
-                },
-                "diskSizeGB": 30
-              },
-              "dataDisks": []
-            },
-            "osProfile": {
-              "computerName": "lab-VM",
-              "adminUsername": "cloud_user",
-              "linuxConfiguration": {
-                "disablePasswordAuthentication": false
-              },
-              "secrets": []
-            },
-            "networkProfile": {
-              "networkInterfaces": [
-                {
-                  "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkInterfaces/lab-NIC"
-                }
-              ]
-            }
-          }
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/DD117C2860D33BA1",
-    "operationId": "DD117C2860D33BA1",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:15:20.5323861Z",
-      "duration": "PT1.1551843S",
-      "trackingId": "be26cb31-5c57-42a4-bbd9-ea154cc05aa7",
-      "statusCode": "Created",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkInterfaces/lab-NIC",
-        "resourceType": "Microsoft.Network/networkInterfaces",
-        "resourceName": "lab-NIC"
-      },
-      "request": {
-        "content": {
-          "location": "southcentralus",
-          "properties": {
-            "ipConfigurations": [
-              {
-                "name": "ipconfig1",
-                "properties": {
-                  "privateIPAllocationMethod": "Dynamic",
-                  "publicIPAddress": {
-                    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/publicIPAddresses/lab-PIP"
-                  },
-                  "subnet": {
-                    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/virtualNetworks/lab-VNET/subnets/default"
-                  }
-                }
-              }
+            "kind": "Storage",
+            "properties": {},
+            "resources": []
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(variables('storageAccountName'), '/default/', variables('fileShareName'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
             ]
-          }
-        }
-      },
-      "response": {
-        "content": {
-          "name": "lab-NIC",
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkInterfaces/lab-NIC",
-          "etag": "W/\"9cf0ab15-715b-4a66-ab96-5b0fdf9ea66e\"",
-          "properties": {
-            "provisioningState": "Succeeded",
-            "resourceGuid": "c2848256-beb6-43b8-b06f-545089ce2e64",
-            "ipConfigurations": [
-              {
-                "name": "ipconfig1",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkInterfaces/lab-NIC/ipConfigurations/ipconfig1",
-                "etag": "W/\"9cf0ab15-715b-4a66-ab96-5b0fdf9ea66e\"",
-                "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "privateIPAddress": "10.0.0.4",
-                  "privateIPAllocationMethod": "Dynamic",
-                  "publicIPAddress": {
-                    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/publicIPAddresses/lab-PIP"
-                  },
-                  "subnet": {
-                    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/virtualNetworks/lab-VNET/subnets/default"
-                  },
-                  "primary": true
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2015-06-15",
+            "name": "[variables('networkSecurityGroupName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "ssh_rule",
+                        "properties": {
+                            "description": "Locks inbound down to ssh default port 22.",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 123,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "web_rule",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 124,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2015-06-15",
+            "name": "[variables('publicIPAddressName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[variables('uniqueDnsLabelPrefix')]"
                 }
-              }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2015-06-15",
+            "name": "[variables('virtualNetworkName')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityGroupName'))]"
             ],
-            "dnsSettings": {
-              "dnsServers": [],
-              "appliedDnsServers": []
-            },
-            "enableIPForwarding": false
-          },
-          "type": "Microsoft.Network/networkInterfaces",
-          "location": "southcentralus"
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/4B3652D8F229031F",
-    "operationId": "4B3652D8F229031F",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:15:19.331343Z",
-      "duration": "PT7.1668397S",
-      "trackingId": "fbd0e86e-776a-4369-b7d0-7720c0e0c2c0",
-      "statusCode": "OK",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/virtualNetworks/lab-VNET",
-        "resourceType": "Microsoft.Network/virtualNetworks",
-        "resourceName": "lab-VNET"
-      },
-      "request": {
-        "content": {
-          "location": "southcentralus",
-          "properties": {
-            "addressSpace": {
-              "addressPrefixes": [
-                "10.0.0.0/16"
-              ]
-            },
-            "subnets": [
-              {
-                "name": "default",
-                "properties": {
-                  "addressPrefix": "10.0.0.0/24",
-                  "networkSecurityGroup": {
-                    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG"
-                  }
-                }
-              }
-            ]
-          }
-        }
-      },
-      "response": {
-        "content": {
-          "name": "lab-VNET",
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/virtualNetworks/lab-VNET",
-          "etag": "W/\"8d3bcbc8-0a25-4f59-b432-a7850421656c\"",
-          "type": "Microsoft.Network/virtualNetworks",
-          "location": "southcentralus",
-          "properties": {
-            "provisioningState": "Succeeded",
-            "resourceGuid": "acd4baf5-bbe9-4401-b6ca-5785df5fd23b",
-            "addressSpace": {
-              "addressPrefixes": [
-                "10.0.0.0/16"
-              ]
-            },
-            "subnets": [
-              {
-                "name": "default",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/virtualNetworks/lab-VNET/subnets/default",
-                "etag": "W/\"8d3bcbc8-0a25-4f59-b432-a7850421656c\"",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "addressPrefix": "10.0.0.0/24",
-                  "networkSecurityGroup": {
-                    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG"
-                  }
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('addressPrefix')]"
+                    ]
                 },
-                "type": "Microsoft.Network/virtualNetworks/subnets"
-              }
-            ]
-          }
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/883C15CB33D4C158",
-    "operationId": "883C15CB33D4C158",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:15:33.9210255Z",
-      "duration": "PT21.7565222S",
-      "trackingId": "409c9bf7-1d11-4c89-a423-77e6fd79c7f3",
-      "statusCode": "OK",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Storage/storageAccounts/storfdmos7iw6bn5s",
-        "resourceType": "Microsoft.Storage/storageAccounts",
-        "resourceName": "storfdmos7iw6bn5s"
-      },
-      "request": {
-        "content": {
-          "sku": {
-            "name": "Standard_LRS"
-          },
-          "kind": "Storage",
-          "location": "southcentralus",
-          "properties": {}
-        }
-      },
-      "response": {
-        "content": {
-          "sku": {
-            "name": "Standard_LRS",
-            "tier": "Standard"
-          },
-          "kind": "Storage",
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Storage/storageAccounts/storfdmos7iw6bn5s",
-          "name": "storfdmos7iw6bn5s",
-          "type": "Microsoft.Storage/storageAccounts",
-          "location": "southcentralus",
-          "tags": {},
-          "properties": {
-            "networkAcls": {
-              "bypass": "AzureServices",
-              "virtualNetworkRules": [],
-              "ipRules": [],
-              "defaultAction": "Allow"
-            },
-            "supportsHttpsTrafficOnly": false,
-            "encryption": {
-              "services": {
-                "file": {
-                  "enabled": true,
-                  "lastEnabledTime": "2024-01-31T14:15:13.6784018Z"
-                },
-                "blob": {
-                  "enabled": true,
-                  "lastEnabledTime": "2024-01-31T14:15:13.6784018Z"
-                }
-              },
-              "keySource": "Microsoft.Storage"
-            },
-            "provisioningState": "Succeeded",
-            "creationTime": "2024-01-31T14:15:13.1783982Z",
-            "primaryEndpoints": {
-              "blob": "https://storfdmos7iw6bn5s.blob.core.windows.net/",
-              "queue": "https://storfdmos7iw6bn5s.queue.core.windows.net/",
-              "table": "https://storfdmos7iw6bn5s.table.core.windows.net/",
-              "file": "https://storfdmos7iw6bn5s.file.core.windows.net/"
-            },
-            "primaryLocation": "southcentralus",
-            "statusOfPrimary": "available"
-          }
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/A8A53A96B53DEBB6",
-    "operationId": "A8A53A96B53DEBB6",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:15:14.2142071Z",
-      "duration": "PT2.0497038S",
-      "trackingId": "a184df6c-be7d-4be6-893f-7da621747115",
-      "statusCode": "Created",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.RecoveryServices/vaults/vault1",
-        "resourceType": "Microsoft.RecoveryServices/vaults",
-        "resourceName": "vault1"
-      },
-      "request": {
-        "content": {
-          "sku": {
-            "name": "RS0",
-            "tier": "Standard"
-          },
-          "location": "southcentralus",
-          "properties": {}
-        }
-      },
-      "response": {
-        "content": {
-          "location": "southcentralus",
-          "name": "vault1",
-          "etag": "W/\"datetime'2024-01-31T14%3A15%3A13.9646736Z'\"",
-          "properties": {
-            "provisioningState": "Succeeded",
-            "privateEndpointStateForBackup": "None",
-            "privateEndpointStateForSiteRecovery": "None",
-            "redundancySettings": {
-              "standardTierStorageRedundancy": "Invalid",
-              "crossRegionRestore": "Disabled"
+                "subnets": [
+                    {
+                        "name": "[variables('subnet1Name')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnet1Prefix')]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+                            }
+                        }
+                    }
+                ]
             }
-          },
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.RecoveryServices/vaults/vault1",
-          "type": "Microsoft.RecoveryServices/vaults",
-          "sku": {
-            "name": "RS0",
-            "tier": "Standard"
-          }
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/8A897E3BF5977113",
-    "operationId": "8A897E3BF5977113",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:15:15.83898Z",
-      "duration": "PT3.6744767S",
-      "trackingId": "36103723-0972-4605-ba58-6b16fb06e9e0",
-      "statusCode": "OK",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/publicIPAddresses/lab-PIP",
-        "resourceType": "Microsoft.Network/publicIPAddresses",
-        "resourceName": "lab-PIP"
-      },
-      "request": {
-        "content": {
-          "location": "southcentralus",
-          "properties": {
-            "publicIPAllocationMethod": "Dynamic",
-            "dnsSettings": {
-              "domainNameLabel": "storefdmos7iw6bn5s"
-            }
-          }
-        }
-      },
-      "response": {
-        "content": {
-          "name": "lab-PIP",
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/publicIPAddresses/lab-PIP",
-          "etag": "W/\"03883096-512b-4ff9-aaaa-8b72f9808f85\"",
-          "location": "southcentralus",
-          "properties": {
-            "provisioningState": "Succeeded",
-            "resourceGuid": "01634cda-e8a6-47b0-a258-41dc0fc87bea",
-            "publicIPAllocationMethod": "Dynamic",
-            "idleTimeoutInMinutes": 4,
-            "dnsSettings": {
-              "domainNameLabel": "storefdmos7iw6bn5s",
-              "fqdn": "storefdmos7iw6bn5s.southcentralus.cloudapp.azure.com"
-            }
-          },
-          "type": "Microsoft.Network/publicIPAddresses"
-        }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/C110FD756514B531",
-    "operationId": "C110FD756514B531",
-    "properties": {
-      "provisioningOperation": "Create",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:15:15.0382573Z",
-      "duration": "PT2.873754S",
-      "trackingId": "18bcd11d-73cf-49dd-9fcb-73510982bca3",
-      "statusCode": "OK",
-      "targetResource": {
-        "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG",
-        "resourceType": "Microsoft.Network/networkSecurityGroups",
-        "resourceName": "lab-NSG"
-      },
-      "request": {
-        "content": {
-          "location": "southcentralus",
-          "properties": {
-            "securityRules": [
-              {
-                "name": "ssh_rule",
-                "properties": {
-                  "description": "Locks inbound down to ssh default port 22.",
-                  "protocol": "Tcp",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "22",
-                  "sourceAddressPrefix": "*",
-                  "destinationAddressPrefix": "*",
-                  "access": "Allow",
-                  "priority": 123,
-                  "direction": "Inbound"
-                }
-              },
-              {
-                "name": "web_rule",
-                "properties": {
-                  "protocol": "*",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "80",
-                  "sourceAddressPrefix": "*",
-                  "destinationAddressPrefix": "*",
-                  "access": "Allow",
-                  "priority": 124,
-                  "direction": "Inbound",
-                  "sourcePortRanges": [],
-                  "destinationPortRanges": [],
-                  "sourceAddressPrefixes": [],
-                  "destinationAddressPrefixes": []
-                }
-              }
-            ]
-          }
-        }
-      },
-      "response": {
-        "content": {
-          "name": "lab-NSG",
-          "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG",
-          "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-          "type": "Microsoft.Network/networkSecurityGroups",
-          "location": "southcentralus",
-          "properties": {
-            "provisioningState": "Succeeded",
-            "resourceGuid": "3d019411-3358-4df3-9946-46e33f50d67d",
-            "securityRules": [
-              {
-                "name": "ssh_rule",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG/securityRules/ssh_rule",
-                "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-                "type": "Microsoft.Network/networkSecurityGroups/securityRules",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "description": "Locks inbound down to ssh default port 22.",
-                  "protocol": "Tcp",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "22",
-                  "sourceAddressPrefix": "*",
-                  "destinationAddressPrefix": "*",
-                  "access": "Allow",
-                  "priority": 123,
-                  "direction": "Inbound"
-                }
-              },
-              {
-                "name": "web_rule",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG/securityRules/web_rule",
-                "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-                "type": "Microsoft.Network/networkSecurityGroups/securityRules",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "protocol": "*",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "80",
-                  "sourceAddressPrefix": "*",
-                  "destinationAddressPrefix": "*",
-                  "access": "Allow",
-                  "priority": 124,
-                  "direction": "Inbound"
-                }
-              }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2015-06-15",
+            "name": "[variables('nicName')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+                "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
             ],
-            "defaultSecurityRules": [
-              {
-                "name": "AllowVnetInBound",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG/defaultSecurityRules/AllowVnetInBound",
-                "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-                "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "description": "Allow inbound traffic from all VMs in VNET",
-                  "protocol": "*",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "*",
-                  "sourceAddressPrefix": "VirtualNetwork",
-                  "destinationAddressPrefix": "VirtualNetwork",
-                  "access": "Allow",
-                  "priority": 65000,
-                  "direction": "Inbound"
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnet1Ref')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2016-04-30-preview",
+            "name": "[variables('vmName')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+            ],
+            "properties": {
+                "osProfile": {
+                    "adminUsername": "cloud_user",
+                    "adminPassword": "QXHakaHlT2fabOzF86J^",
+                    "computerName": "[variables('vmName')]",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": false
+                    }
+                },
+                "hardwareProfile": {
+                    "vmSize": "[variables('vmSize')]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[variables('imagePublisher')]",
+                        "offer": "[variables('imageOffer')]",
+                        "sku": "[variables('ubuntuOSVersion')]",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage"
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+                        }
+                    ]
                 }
-              },
-              {
-                "name": "AllowAzureLoadBalancerInBound",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG/defaultSecurityRules/AllowAzureLoadBalancerInBound",
-                "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-                "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "description": "Allow inbound traffic from azure load balancer",
-                  "protocol": "*",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "*",
-                  "sourceAddressPrefix": "AzureLoadBalancer",
-                  "destinationAddressPrefix": "*",
-                  "access": "Allow",
-                  "priority": 65001,
-                  "direction": "Inbound"
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2015-05-01-preview",
+            "name": "[concat(variables('vmName'),'/labPrep')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts/fileServices/shares', variables('storageAccountName'), 'default', variables('fileShareName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                        "[variables('file1Url')]",
+                        "[variables('file2Url')]",
+                        "[variables('file3Url')]"
+                    ],
+                    "commandToExecute": "[concat('curl -sL https://aka.ms/InstallAzureCLIDeb | bash && az storage file upload-batch --destination records --source . --pattern \"*.csv\" --account-name ', variables('storageAccountName'), ' --account-key ', listKeys(variables('storageAccountId') ,'2015-05-01-preview').key1)]"
                 }
-              },
-              {
-                "name": "DenyAllInBound",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG/defaultSecurityRules/DenyAllInBound",
-                "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-                "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "description": "Deny all inbound traffic",
-                  "protocol": "*",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "*",
-                  "sourceAddressPrefix": "*",
-                  "destinationAddressPrefix": "*",
-                  "access": "Deny",
-                  "priority": 65500,
-                  "direction": "Inbound"
-                }
-              },
-              {
-                "name": "AllowVnetOutBound",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG/defaultSecurityRules/AllowVnetOutBound",
-                "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-                "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "description": "Allow outbound traffic from all VMs to all VMs in VNET",
-                  "protocol": "*",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "*",
-                  "sourceAddressPrefix": "VirtualNetwork",
-                  "destinationAddressPrefix": "VirtualNetwork",
-                  "access": "Allow",
-                  "priority": 65000,
-                  "direction": "Outbound"
-                }
-              },
-              {
-                "name": "AllowInternetOutBound",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG/defaultSecurityRules/AllowInternetOutBound",
-                "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-                "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "description": "Allow outbound traffic from all VMs to Internet",
-                  "protocol": "*",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "*",
-                  "sourceAddressPrefix": "*",
-                  "destinationAddressPrefix": "Internet",
-                  "access": "Allow",
-                  "priority": 65001,
-                  "direction": "Outbound"
-                }
-              },
-              {
-                "name": "DenyAllOutBound",
-                "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Network/networkSecurityGroups/lab-NSG/defaultSecurityRules/DenyAllOutBound",
-                "etag": "W/\"7367fb99-e084-4d77-940a-bf2e4b6eba19\"",
-                "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules",
-                "properties": {
-                  "provisioningState": "Succeeded",
-                  "description": "Deny all outbound traffic",
-                  "protocol": "*",
-                  "sourcePortRange": "*",
-                  "destinationPortRange": "*",
-                  "sourceAddressPrefix": "*",
-                  "destinationAddressPrefix": "*",
-                  "access": "Deny",
-                  "priority": 65500,
-                  "direction": "Outbound"
-                }
-              }
-            ]
-          }
+            }
         }
-      }
-    }
-  },
-  {
-    "id": "/subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/431-90d523b8-restore-file-share-from-azure-backup/providers/Microsoft.Resources/deployments/dply-431-90d523b8-restore-file-share-from-azure-backup/operations/08584948963758966222",
-    "operationId": "08584948963758966222",
-    "properties": {
-      "provisioningOperation": "EvaluateDeploymentOutput",
-      "provisioningState": "Succeeded",
-      "timestamp": "2024-01-31T14:18:12.2728903Z",
-      "duration": "PT0.2452287S",
-      "trackingId": "2e930e79-367b-4512-9e85-cd84ae0dd4c1",
-      "statusCode": "OK"
-    }
-  }
-]
+    ],
+    "outputs": {}
+}
